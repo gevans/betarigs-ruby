@@ -5,8 +5,8 @@ module Betarigs
 
     attr_reader :attributes
 
-    alias_method :to_hash, :attributes
-    alias_method :as_json, :attributes
+    alias_method  :to_hash, :attributes
+    def_delegator :to_hash, :to_json
 
     def initialize(api_key = nil, attrs = {})
       @api_key    = api_key
