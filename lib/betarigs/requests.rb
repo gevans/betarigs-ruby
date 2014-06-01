@@ -29,6 +29,10 @@ module Betarigs
         conn.request  :json
         conn.response :json, content_type: /\bjson$/
 
+        if Betarigs.middleware.respond_to?(:call)
+          Betarigs.middleware.call(conn)
+        end
+
         conn.adapter Faraday.default_adapter
       end
     end

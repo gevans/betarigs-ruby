@@ -6,6 +6,7 @@ require 'betarigs/client'
 module Betarigs
   extend self
 
-  def new(api_key = nil)
+  def middleware(&block)
+    block_given? ? @middleware = block : @middleware
   end
 end
